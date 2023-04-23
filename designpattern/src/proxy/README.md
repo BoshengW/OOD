@@ -2,6 +2,39 @@
 - 定义：代理类包含所有委托类的公有函数(无法代理私有方法)，
 并将在委托类基础上加入新逻辑
 
+## 代理模式代码 实例
+- 组合实现 - 也可以抽象类继承
+
+```java
+public interface IA {
+    public void f();
+}
+
+public class A implements IA {
+    IA a;
+    
+    @Override
+    public void f() {
+      System.out.println("real object IA class");
+    }
+}
+
+public class AProxy implements IA {
+    IA a;
+    
+    public AProxy(IA a) {
+        this.a = a;
+    }
+    
+    @Override
+    public void f() {
+        // 与IA类不相关功能
+        a.f();
+        // 与 IA类不相关功能
+    }
+}
+```
+
 ### 常见应用
 - 业务系统的非功能性需求开发：Spring AOP
 - RPC框架 (远程代理)
